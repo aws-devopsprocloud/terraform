@@ -9,9 +9,9 @@ variable "ami-id" {
   default = "ami-0220d79f3f480ecf5"
 }
 
-variable "instance-type" {
-  type = string
-  default = "t3.micro"
+variable "instance-names" {
+  type = list
+  default = ["mongodb", "redis", "mysql", "frontend",]
 }
 
 variable "ami-tags" {
@@ -21,20 +21,16 @@ variable "ami-tags" {
     Project = "roboshop"
     Environment = "dev"
     Terraform = "true"
-    Component = "web"
   }
 }
-variable "sg-name" {
+
+variable "zone_id" {
   type = string
-  default = "allow_all"
+  default = "Z059178135GSKTAXVUIAQ"
 }
 
-variable "sg-description" {
-  type = string
-  default = "Allow TLS inbound traffic and all outbound traffic"
-}
-
-variable "cidr-blocks" {
-  type = list 
-  default = ["0.0.0.0/0"]
+variable "domain_name" {
+  type = string 
+  default = "devopsprocloud.in"
+  
 }

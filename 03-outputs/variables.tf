@@ -1,0 +1,9 @@
+variable "ami-id" {
+  type = string 
+  default = "ami-0220d79f3f480ecf5"
+}
+
+variable "instance-type" {
+  type = string
+  default = "t3.micro"
+}

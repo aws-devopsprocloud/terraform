@@ -12,3 +12,24 @@ terraform plan/apply/destroy -var="<vaiable_name=value>"
 
 terraform plan/apply/destroy -var-file="<vaiable_file.tfvars>"
 
+#-------------------------
+#        Conditions       |
+#-------------------------
+
+
+
+#-------------------------
+#        Functions       |
+#-------------------------
+
+
+
+#-------------------------
+#        Outputs         |
+#-------------------------
+
+
+
+#-------------------------
+#        Locals           |
+#-------------------------
