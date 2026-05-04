@@ -1,0 +1,14 @@
+terraform init 
+terraform plan 
+terraform apply 
+terraform destroy 
+terraform apply -auto-approve 
+terraform destroy -auto-approve
+
+#-------------------------
+#         Variables      |
+#-------------------------
+terraform plan/apply/destroy -var="<vaiable_name=value>"
+
+terraform plan/apply/destroy -var-file="<vaiable_file.tfvars>"
+
