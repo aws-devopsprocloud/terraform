@@ -35,6 +35,23 @@ terraform plan/apply/destroy -var-file="<vaiable_file.tfvars>"
 #------------------------- 
 
 
+#-------------------------
+#        Terraform State           |
+#------------------------- 
+Local state:
+
+terraform will have no idea about the infea created if multiple persons working on same infrastructure if the terraform state is in their local
+
+terraform state file is crucial, if we keep it in local, it may get deleted or updated by mistakndly.
+
+Remote state:
+
+s3 bucket + encrypt=true + use_lockfile=true. (<keyname>.tflock.json)
+change the provide backend to s3 
+
+terraform init -reconfigure 
+
+
 #-------------------------------------
 #        Multi Enironments           |         
 #-------------------------------------
@@ -43,7 +60,10 @@ terraform init -backend-config=dev/backend.tf
 
 terraform plan -var-file=dev/dev.tfvars 
 
-terraform init reconfigure -backend-config=prod/backend.tf 
+to load the production
+terraform init -reconfigure -backend-config=prod/backend.tf 
+
+We ahev to run backend reconfiguration evrytime if you run commands in dev when the previous eb=nvironment is Producrtion
 
 
 #-------------------------------------
@@ -55,6 +75,7 @@ To manage multiple environments withthe same code
 terraform workspace list 
 terraform worksapce new dev
 terraform workspace select dev or prod 
+
 
 
 #-------------------------------------
@@ -82,3 +103,5 @@ server configuration --> Ansible
 VPC
 
 Public subnets --> subnets whohave routes to the internet gateway is called public subnets
+
+
