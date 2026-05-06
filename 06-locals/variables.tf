@@ -9,28 +9,8 @@ variable "ami-id" {
   default = "ami-0220d79f3f480ecf5"
 }
 
-variable "instance-names" {
-  type = list
-  default = ["mongodb", "redis", "mysql", "frontend",]
+variable "is_prod" {
+  type = bool
+  default = true
 }
 
-variable "ami-tags" {
-  type = map 
-  default = {
-    Name = "EC2"
-    Project = "roboshop"
-    Environment = "dev"
-    Terraform = "true"
-  }
-}
-
-variable "zone_id" {
-  type = string
-  default = "Z059178135GSKTAXVUIAQ"
-}
-
-variable "domain_name" {
-  type = string 
-  default = "devopsprocloud.in"
-  
-}

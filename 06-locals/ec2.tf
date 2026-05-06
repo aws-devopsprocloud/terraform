@@ -1,23 +1,8 @@
 resource "aws_instance" "web" { # web is for terraform reference only 
   ami           = var.ami-id
-  count = 4 # this length function will calculate the length of variables in var.instance-names dynamically
-  # instance_type = var.instance-names[count.index] == "mongodb" || var.instance-names[count.index] == "mysql" ? "t3.small" : "t3.micro"
-
   instance_type = local.instance-type
   
   tags = {
-    Name = var.instance-names[count.index]
+    Name = "locals-ec2"
   }
-}
-
-resource "aws_route53_record" "www" {
-  zone_id = var.zone_id
-  count = 4
- # name    = "${var.instance-names[count.index]}.devopsprocloud.in" # Interpolation --> mixing variable with statis text
-  name    = "${var.instance-names[count.index]}.${var.domain_name}"
-  type    = "A"
-  ttl     = 1
-  # records = [var.instance-names[count.index] == "frontend" ? aws_instance.web[count.index].public_ip : aws_instance.web[count.index].private_ip]
-
-  records = [local.ip]
 }

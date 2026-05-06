@@ -32,4 +32,53 @@ terraform plan/apply/destroy -var-file="<vaiable_file.tfvars>"
 
 #-------------------------
 #        Locals           |
-#-------------------------
+#------------------------- 
+
+
+#-------------------------------------
+#        Multi Enironments           |         
+#-------------------------------------
+
+terraform init -backend-config=dev/backend.tf 
+
+terraform plan -var-file=dev/dev.tfvars 
+
+terraform init reconfigure -backend-config=prod/backend.tf 
+
+
+#-------------------------------------
+#        Terrafrom Worksapces         |         
+#-------------------------------------
+
+To manage multiple environments withthe same code 
+
+terraform workspace list 
+terraform worksapce new dev
+terraform workspace select dev or prod 
+
+
+#-------------------------------------
+#        Terrafrom Provisoners         |         
+#-------------------------------------
+
+local-exec --> 
+It will only run once 
+remote-exec --> This will run inside the server 
+- ypou should connect to the server 
+- then run the commands
+
+provusionersa re useful to integrate terraform with configuration management tools like ansible 
+server creation --> terraform 
+server configuration --> Ansible 
+
+#-------------------------------------
+#        Terrafrom Modules         |         
+#-------------------------------------
+
+1. Customised modules 
+2. Open source modules 
+
+
+VPC
+
+Public subnets --> subnets whohave routes to the internet gateway is called public subnets
